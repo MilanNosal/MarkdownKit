@@ -11,6 +11,7 @@ import Foundation
 public protocol MarkdownStyle {
   var font: MarkdownFont? { get }
   var color: MarkdownColor? { get }
+  var paragraphStyle: NSParagraphStyle? { get }
   var attributes: [NSAttributedString.Key: AnyObject] { get }
 }
 
@@ -22,6 +23,9 @@ public extension MarkdownStyle {
     }
     if let color = color {
         attributes[NSAttributedString.Key.foregroundColor] = color
+    }
+    if let paragraphStyle {
+        attributes[NSAttributedString.Key.paragraphStyle] = paragraphStyle
     }
     return attributes
   }

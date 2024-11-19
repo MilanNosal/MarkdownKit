@@ -76,6 +76,7 @@ open class MarkdownParser {
 
   public let font: MarkdownFont
   public let color: MarkdownColor
+  public let paragraphStyle: NSParagraphStyle
   
   // MARK: Legacy Initializer
   @available(*, deprecated, renamed: "init", message: "This constructor will be removed soon, please use the new options constructor")
@@ -89,10 +90,12 @@ open class MarkdownParser {
   // MARK: Initializer
   public init(font: MarkdownFont = MarkdownParser.defaultFont,
               color: MarkdownColor = MarkdownParser.defaultColor,
+              paragraphStyle: NSParagraphStyle = .default,
               enabledElements: EnabledElements = .all,
               customElements: [MarkdownElement] = []) {
     self.font = font
     self.color = color
+    self.paragraphStyle = paragraphStyle
     
     self.header = MarkdownHeader()
     self.list = MarkdownList()
@@ -108,6 +111,7 @@ open class MarkdownParser {
     self.unescapingElements = [code, unescaping]
     self.customElements = customElements
     self.enabledElements = enabledElements
+      
     updateDefaultElements()
     updateEscapingElements()
     updateUnescapingElements()
@@ -139,6 +143,8 @@ open class MarkdownParser {
     attributedString.addAttribute(.font, value: font,
                                   range: NSRange(location: 0, length: attributedString.length))
     attributedString.addAttribute(.foregroundColor, value: color,
+                                  range: NSRange(location: 0, length: attributedString.length))
+    attributedString.addAttribute(.paragraphStyle, value: paragraphStyle,
                                   range: NSRange(location: 0, length: attributedString.length))
     var elements: [MarkdownElement] = escapingElements
     elements.append(contentsOf: defaultElements)

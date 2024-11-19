@@ -14,6 +14,8 @@ open class MarkdownList: MarkdownLevelElement {
   open var maxLevel: Int
   open var font: MarkdownFont?
   open var color: MarkdownColor?
+  open var paragraphStyle: NSParagraphStyle?
+  open var levelIndicatorOffsetList: [Int: String]
   open var separator: String
   open var indicator: String
 
@@ -23,23 +25,26 @@ open class MarkdownList: MarkdownLevelElement {
   }
 
   public init(font: MarkdownFont? = nil, maxLevel: Int = 6, indicator: String = "•",
-              separator: String = "  ", color: MarkdownColor? = nil) {
+              separator: String = "  ", color: MarkdownColor? = nil,
+              paragraphStyle: NSParagraphStyle? = nil,
+              levelIndicatorOffsetList: [Int: String] = [1: "", 2: "", 3: "  ", 4: "  ", 5: "    ", 6: "    "]) {
     self.maxLevel = maxLevel
     self.indicator = indicator
     self.separator = separator
     self.font = font
     self.color = color
+    self.paragraphStyle = paragraphStyle
+    self.levelIndicatorOffsetList = levelIndicatorOffsetList
   }
 
   open func formatText(_ attributedString: NSMutableAttributedString, range: NSRange, level: Int) {
     let levelIndicatorList = [1: "\(indicator)  ", 2: "\(indicator)  ", 3: "◦  ", 4: "◦  ", 5: "▪︎  ", 6: "▪︎  "]
-    let levelIndicatorOffsetList = [1: "", 2: "", 3: "  ", 4: "  ", 5: "    ", 6: "    "]
     guard let indicatorIcon = levelIndicatorList[level],
-      let offset = levelIndicatorOffsetList[level] else { return }
+          let offset = levelIndicatorOffsetList[level] else { return }
     let indicator = "\(offset)\(indicatorIcon)"
     attributedString.replaceCharacters(in: range, with: indicator)
     let updatedRange = NSRange(location: range.location, length: indicator.utf16.count)
-    attributedString.addAttributes([.paragraphStyle : defaultParagraphStyle()], range: updatedRange)
+    attributedString.addAttributes([.paragraphStyle : paragraphStyle ?? defaultParagraphStyle()], range: updatedRange)
   }
 
   private func defaultParagraphStyle() -> NSMutableParagraphStyle {

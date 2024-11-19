@@ -14,6 +14,7 @@ open class MarkdownQuote: MarkdownLevelElement {
   open var maxLevel: Int
   open var font: MarkdownFont?
   open var color: MarkdownColor?
+  open var paragraphStyle: NSParagraphStyle?
   open var separator: String
   open var indicator: String
 
@@ -23,14 +24,15 @@ open class MarkdownQuote: MarkdownLevelElement {
   }
 
   public init(font: MarkdownFont? = nil, maxLevel: Int = 0, indicator: String = ">",
-              separator: String = "  ", color: MarkdownColor? = nil) {
+              separator: String = "  ", color: MarkdownColor? = nil,
+              paragraphStyle: NSParagraphStyle? = nil) {
     self.maxLevel = maxLevel
     self.indicator = indicator
     self.separator = separator
     self.font = font
     self.color = color
+    self.paragraphStyle = paragraphStyle
   }
-
 
   open func formatText(_ attributedString: NSMutableAttributedString, range: NSRange, level: Int) {
     var string = (0..<level).reduce("") { (string: String, _: Int) -> String in

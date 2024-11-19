@@ -13,14 +13,16 @@ open class MarkdownBold: MarkdownCommonElement {
 
   open var font: MarkdownFont?
   open var color: MarkdownColor?
+  open var paragraphStyle: NSParagraphStyle?
 
   open var regex: String {
     return MarkdownBold.regex
   }
   
-  public init(font: MarkdownFont? = nil, color: MarkdownColor? = nil) {
+  public init(font: MarkdownFont? = nil, color: MarkdownColor? = nil, paragraphStyle: NSParagraphStyle? = nil) {
     self.font = font
     self.color = color
+    self.paragraphStyle = paragraphStyle
   }
 
   public func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
