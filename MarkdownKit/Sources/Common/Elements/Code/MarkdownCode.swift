@@ -15,7 +15,7 @@ open class MarkdownCode: MarkdownCommonElement {
   open var color: MarkdownColor?
   open var textHighlightColor: MarkdownColor?
   open var textBackgroundColor: MarkdownColor?
-  open var paragraphStyle: NSParagraphStyle?
+  open var paragraphStyle: MarkdownParagraphStyle?
 
   open var regex: String {
     return MarkdownCode.regex
@@ -25,7 +25,7 @@ open class MarkdownCode: MarkdownCommonElement {
               color: MarkdownColor? = nil,
               textHighlightColor: MarkdownColor? = MarkdownCode.defaultHighlightColor,
               textBackgroundColor: MarkdownColor? = MarkdownCode.defaultBackgroundColor,
-              paragraphStyle: NSParagraphStyle? = nil) {
+              paragraphStyle: MarkdownParagraphStyle? = nil) {
     self.font = font
     self.color = color
     self.textHighlightColor = textHighlightColor

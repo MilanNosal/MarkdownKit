@@ -16,7 +16,7 @@ open class MarkdownHeader: MarkdownLevelElement {
   open var font: MarkdownFont?
   open var color: MarkdownColor?
   open var fontIncrease: Int
-  open var paragraphStyle: NSParagraphStyle?
+  open var paragraphStyle: MarkdownParagraphStyle?
   open var fontsPerLevel: [Int: MarkdownFont]
 
   open var regex: String {
@@ -26,7 +26,7 @@ open class MarkdownHeader: MarkdownLevelElement {
 
   public init(font: MarkdownFont? = MarkdownHeader.defaultFont,
               maxLevel: Int = 0, fontIncrease: Int = 2, color: MarkdownColor? = nil,
-              paragraphStyle: NSParagraphStyle? = nil, fontsPerLevel: [Int: MarkdownFont] = [:]) {
+              paragraphStyle: MarkdownParagraphStyle? = nil, fontsPerLevel: [Int: MarkdownFont] = [:]) {
     self.maxLevel = maxLevel
     self.font = font
     self.color = color

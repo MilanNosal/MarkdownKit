@@ -76,7 +76,7 @@ open class MarkdownParser {
 
   public let font: MarkdownFont
   public let color: MarkdownColor
-  public let paragraphStyle: NSParagraphStyle
+  public let paragraphStyle: MarkdownParagraphStyle
   
   // MARK: Legacy Initializer
   @available(*, deprecated, renamed: "init", message: "This constructor will be removed soon, please use the new options constructor")
@@ -90,7 +90,7 @@ open class MarkdownParser {
   // MARK: Initializer
   public init(font: MarkdownFont = MarkdownParser.defaultFont,
               color: MarkdownColor = MarkdownParser.defaultColor,
-              paragraphStyle: NSParagraphStyle = .default,
+              paragraphStyle: MarkdownParagraphStyle = .default,
               enabledElements: EnabledElements = .all,
               customElements: [MarkdownElement] = []) {
     self.font = font

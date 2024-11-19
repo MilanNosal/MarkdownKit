@@ -11,7 +11,7 @@ import Foundation
 public protocol MarkdownStyle {
   var font: MarkdownFont? { get }
   var color: MarkdownColor? { get }
-  var paragraphStyle: NSParagraphStyle? { get }
+  var paragraphStyle: MarkdownParagraphStyle? { get }
   var attributes: [NSAttributedString.Key: AnyObject] { get }
 }
 

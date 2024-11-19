@@ -14,7 +14,7 @@ open class MarkdownQuote: MarkdownLevelElement {
   open var maxLevel: Int
   open var font: MarkdownFont?
   open var color: MarkdownColor?
-  open var paragraphStyle: NSParagraphStyle?
+  open var paragraphStyle: MarkdownParagraphStyle?
   open var separator: String
   open var indicator: String
 
@@ -25,7 +25,7 @@ open class MarkdownQuote: MarkdownLevelElement {
 
   public init(font: MarkdownFont? = nil, maxLevel: Int = 0, indicator: String = ">",
               separator: String = "  ", color: MarkdownColor? = nil,
-              paragraphStyle: NSParagraphStyle? = nil) {
+              paragraphStyle: MarkdownParagraphStyle? = nil) {
     self.maxLevel = maxLevel
     self.indicator = indicator
     self.separator = separator

@@ -15,7 +15,7 @@ open class MarkdownLink: MarkdownLinkElement {
 
   open var font: MarkdownFont?
   open var color: MarkdownColor?
-  open var paragraphStyle: NSParagraphStyle?
+  open var paragraphStyle: MarkdownParagraphStyle?
   open var defaultScheme: String?
 
   open var regex: String {
@@ -26,7 +26,7 @@ open class MarkdownLink: MarkdownLinkElement {
     return try NSRegularExpression(pattern: regex, options: .dotMatchesLineSeparators)
   }
 
-  public init(font: MarkdownFont? = nil, color: MarkdownColor? = MarkdownLink.defaultColor, paragraphStyle: NSParagraphStyle? = nil) {
+  public init(font: MarkdownFont? = nil, color: MarkdownColor? = MarkdownLink.defaultColor, paragraphStyle: MarkdownParagraphStyle? = nil) {
     self.font = font
     self.color = color
     self.paragraphStyle = paragraphStyle

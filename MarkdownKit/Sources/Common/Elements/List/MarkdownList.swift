@@ -14,7 +14,7 @@ open class MarkdownList: MarkdownLevelElement {
   open var maxLevel: Int
   open var font: MarkdownFont?
   open var color: MarkdownColor?
-  open var paragraphStyle: NSParagraphStyle?
+  open var paragraphStyle: MarkdownParagraphStyle?
   open var levelIndicatorOffsetList: [Int: String]
   open var separator: String
   open var indicator: String
@@ -26,7 +26,7 @@ open class MarkdownList: MarkdownLevelElement {
 
   public init(font: MarkdownFont? = nil, maxLevel: Int = 6, indicator: String = "•",
               separator: String = "  ", color: MarkdownColor? = nil,
-              paragraphStyle: NSParagraphStyle? = nil,
+              paragraphStyle: MarkdownParagraphStyle? = nil,
               levelIndicatorOffsetList: [Int: String] = [1: "", 2: "", 3: "  ", 4: "  ", 5: "    ", 6: "    "]) {
     self.maxLevel = maxLevel
     self.indicator = indicator

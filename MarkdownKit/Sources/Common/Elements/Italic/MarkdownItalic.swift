@@ -13,13 +13,13 @@ open class MarkdownItalic: MarkdownCommonElement {
 
   open var font: MarkdownFont?
   open var color: MarkdownColor?
-  open var paragraphStyle: NSParagraphStyle?
+  open var paragraphStyle: MarkdownParagraphStyle?
   
   open var regex: String {
     return MarkdownItalic.regex
   }
   
-  public init(font: MarkdownFont? = nil, color: MarkdownColor? = nil, paragraphStyle: NSParagraphStyle? = nil) {
+  public init(font: MarkdownFont? = nil, color: MarkdownColor? = nil, paragraphStyle: MarkdownParagraphStyle? = nil) {
     self.font = font
     self.color = color
     self.paragraphStyle = paragraphStyle
